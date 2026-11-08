@@ -19,7 +19,7 @@ pip install -e .
 ## Использование
 
 ```bash
-python -m librarycatalog add --file catalog.json --id 1 --title "War and Peace" --category fiction --year 1869 --author "Tolstoy" --isbn "978-5-04-116640-2"
+python -m librarycatalog add --file catalog.json --id 1 --title "War and Peace" --category fiction --year 1869 --author "Tolstoy" --publisher "AST"
 python -m librarycatalog list --file catalog.json
 python -m librarycatalog get --file catalog.json --id 1
 python -m librarycatalog find --file catalog.json --name "war"

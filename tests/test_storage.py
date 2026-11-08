@@ -9,8 +9,8 @@ from librarycatalog.storage import load_catalog, save_catalog
 
 def test_round_trip(tmp_path):
     c = Catalog()
-    c.add(make_book("1", "War and Peace", "fiction", 1869, "Tolstoy", "1"))
-    c.add(make_book("2", "Anna Karenina", "fiction", 1877, "Tolstoy", "2"))
+    c.add(make_book("1", "War and Peace", "fiction", 1869, "Tolstoy", "AST"))
+    c.add(make_book("2", "Anna Karenina", "fiction", 1877, "Tolstoy", "AST"))
 
     path = tmp_path / "catalog.json"
     save_catalog(c, path)
@@ -46,7 +46,7 @@ def test_unknown_version(tmp_path):
 
 def test_no_partial_change_on_bad_book(tmp_path):
     c = Catalog()
-    c.add(make_book("1", "Existing", "fiction", 2000, "A", "1"))
+    c.add(make_book("1", "Existing", "fiction", 2000, "A", "P"))
 
     path = tmp_path / "catalog.json"
     path.write_text(
@@ -54,9 +54,9 @@ def test_no_partial_change_on_bad_book(tmp_path):
             "format_version": 1,
             "books": [
                 {"id": "2", "title": "OK", "category": "fiction",
-                 "year": 2001, "author": "B", "isbn": "2"},
+                 "year": 2001, "author": "B", "publisher": "P"},
                 {"id": "3", "title": "", "category": "fiction",
-                 "year": 2002, "author": "C", "isbn": "3"},
+                 "year": 2002, "author": "C", "publisher": "P"},
             ],
         }),
         encoding="utf-8",
@@ -65,7 +65,6 @@ def test_no_partial_change_on_bad_book(tmp_path):
     with pytest.raises(CorruptedFileError):
         load_catalog(c, path)
 
-    # каталог должен остаться как был
     assert len(c) == 1
     assert "2" not in c
     assert "1" in c

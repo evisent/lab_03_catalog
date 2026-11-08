@@ -19,12 +19,11 @@ class Book:
     category: str
     year: int
     author: str
-    isbn: str
+    publisher: str
 
 
-def make_book(id, title, category, year, author, isbn):
-    """Создаёт и валидирует книгу. Неверная - исключение"""
-    
+def make_book(id, title, category, year, author, publisher):
+    """Создаёт и валидирует книгу. Неверная — исключение."""
     if not isinstance(id, str) or id == "":
         raise InvalidBookError("id must be non-empty string")
 
@@ -40,8 +39,8 @@ def make_book(id, title, category, year, author, isbn):
     if not isinstance(author, str) or author == "":
         raise InvalidBookError("author must be non-empty string")
 
-    if not isinstance(isbn, str) or isbn == "":
-        raise InvalidBookError("isbn must be non-empty string")
+    if not isinstance(publisher, str) or publisher == "":
+        raise InvalidBookError("publisher must be non-empty string")
 
     return Book(
         id=id,
@@ -49,7 +48,7 @@ def make_book(id, title, category, year, author, isbn):
         category=category,
         year=year,
         author=author,
-        isbn=isbn,
+        publisher=publisher,
     )
 
 
@@ -60,7 +59,7 @@ def book_to_dict(book):
         "category": book.category,
         "year": book.year,
         "author": book.author,
-        "isbn": book.isbn,
+        "publisher": book.publisher,
     }
 
 
@@ -71,5 +70,5 @@ def book_from_dict(data):
         data["category"],
         data["year"],
         data["author"],
-        data["isbn"],
+        data["publisher"],
     )

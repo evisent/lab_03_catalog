@@ -17,7 +17,7 @@ def save_catalog(catalog, path):
 
 
 def load_catalog(catalog, path):
-    """Загружает книги в существующий каталог. При ошибке — без частичных изменений."""
+    """Загружает книги в существующий каталог"""
     
     try:
         with open(path, encoding="utf-8") as f:
