@@ -39,7 +39,6 @@ class Catalog:
         return len(self._items)
 
     def __iter__(self):
-        # детерминированный порядок: по возрастанию id
         for book_id in sorted(self._items):
             yield self._items[book_id]
 
