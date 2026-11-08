@@ -42,7 +42,6 @@ def main(argv=None):
     try:
         load_catalog(catalog, args.file)
     except CatalogError:
-        # файла нет или он битый — начинаем с пустого каталога
         pass
 
     try:
