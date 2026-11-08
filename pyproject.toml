@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "librarycatalog"
+version = "0.1.0"
+description = "Каталог библиотечных книг"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.scripts]
+librarycatalog = "librarycatalog.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

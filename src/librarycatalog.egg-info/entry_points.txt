@@ -1,0 +1,2 @@
+[console_scripts]
+librarycatalog = librarycatalog.__main__:main
